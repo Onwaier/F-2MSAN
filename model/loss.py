@@ -24,7 +24,7 @@ def MyKMajorityLoss(alphas_part, k, sigma=0.02):
 
         loss_tmp = 0.0
         for j in range(k):
-            loss_tmp += max(torch.Tensor([0]).cuda(), sigma - (tmp_list[0][j] - alphas_part_sum / (4 - k)))
+            loss_tmp += max(torch.Tensor([0]).cuda(), sigma - (tmp_list[0][j] - alphas_part_sum / (alphas_part.shape[2] - k)))
         loss_wt += loss_tmp * 1.0 / k
     return loss_wt / size
 
@@ -41,6 +41,6 @@ def MyRRBLoss(alphas_part, k, sigma=0.15):
             alphas_part_sum = alphas_part_sum + tmp_list[0][j + k]
         for j in range(k):
             alphas_part_sum2 = alphas_part_sum2 + tmp_list[0][j]
-        loss_tmp = max(torch.Tensor([0]).cuda(), sigma - (alphas_part_sum2 / k - alphas_part_sum / (alphas_part.shape[2] - k)))# 原来是16
+        loss_tmp = max(torch.Tensor([0]).cuda(), sigma - (alphas_part_sum2 / k - alphas_part_sum / (alphas_part.shape[2] - k)))
         loss_wt += loss_tmp
     return loss_wt / size
