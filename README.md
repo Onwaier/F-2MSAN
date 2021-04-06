@@ -6,6 +6,8 @@
 ## The framework of F2MSAN
 ![the framework of F2MSAN](https://raw.githubusercontent.com/onwaiers/Picture/master/img/20210404160025.png)
 
+## Visualization of the effect of occlusion on recognition results.
+![occlu effect](https://raw.githubusercontent.com/onwaiers/Picture/master/img/20210406230308.GIF)
 ## Notes on the code
 1. The code of FAN, MSAN and crop will be seen in **model/f2msan.py**, you can find more details about model.
 2. The implementation of the loss function will be found in **model/loss.py**

@@ -9,8 +9,17 @@ Reference:
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.utils.model_zoo as model_zoo
 
 from torch.autograd import Variable
+
+model_urls = {
+     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
+     'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
+     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
+     'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
+     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
+ }
 
 
 class BasicBlock(nn.Module):
@@ -102,7 +111,7 @@ class ResNet(nn.Module):
 
 def ResNet18():
     model = ResNet(BasicBlock, [2,2,2,2])
-    # pretrained_dict = model_zoo.load_url(model_urls['resnet18'])
+    pretrained_dict = model_zoo.load_url(model_urls['resnet18'])
     # model_dict = model.state_dict()
     # pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
     # model_dict.update(pretrained_dict)
